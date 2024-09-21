@@ -46,4 +46,9 @@ public partial class PlayerAttackState : PlayerState
     {
         _comboCounter = 1;
     }
+
+    private void PerformHit()
+    {
+        GD.Print("Perform hit!");
+    }
 }
