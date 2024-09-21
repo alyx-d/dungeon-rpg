@@ -3,7 +3,7 @@ using Godot;
 
 namespace DungeonRpg.Scripts.Characters.Player;
 
-public partial class PlayerDashState : CharacterState
+public partial class PlayerDashState : PlayerState
 {
     [Export] private Timer _dashTimer;
 

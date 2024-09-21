@@ -3,7 +3,7 @@ using Godot;
 
 namespace DungeonRpg.Scripts.Characters.Player;
 
-public partial class PlayerIdleState : CharacterState
+public partial class PlayerIdleState : PlayerState
 {
     public override void _PhysicsProcess(double delta)
     {

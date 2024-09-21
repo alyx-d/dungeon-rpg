@@ -3,7 +3,7 @@ using Godot;
 
 namespace DungeonRpg.Scripts.Characters.Player;
 
-public partial class PlayerMoveState : CharacterState
+public partial class PlayerMoveState : PlayerState
 {
     [Export(PropertyHint.Range, "0,50,1")]
     private float _playerMoveSpeed = 5f;

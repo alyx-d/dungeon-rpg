@@ -8,7 +8,6 @@ public abstract partial class Character : CharacterBody3D
     [ExportGroup("Required Nodes")]
     [Export]
     public Sprite3D Sprite3dNode { get; private set; }
-
     [Export] public AnimationPlayer AnimPlayerNode { get; private set; }
     [Export] public StateMachine StateMachineNode { get; private set; }
 
