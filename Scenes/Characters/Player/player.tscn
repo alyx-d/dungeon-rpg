@@ -251,7 +251,7 @@ height = 1.6781
 [sub_resource type="BoxShape3D" id="BoxShape3D_m6j6a"]
 size = Vector3(0.5, 0.5, 0.5)
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("Sprite3dNode", "AnimPlayerNode", "StateMachineNode")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("Sprite3dNode", "AnimPlayerNode", "StateMachineNode", "HitboxNode", "HitBoxShapeNode")]
 collision_layer = 2
 collision_mask = 5
 floor_max_angle = 1.55334
@@ -261,6 +261,8 @@ _stats = Array[Resource]([SubResource("Resource_u0jwj"), SubResource("Resource_1
 Sprite3dNode = NodePath("Sprite3D")
 AnimPlayerNode = NodePath("AnimationPlayer")
 StateMachineNode = NodePath("StateMachine")
+HitboxNode = NodePath("Hitbox")
+HitBoxShapeNode = NodePath("Hitbox/CollisionShape3D")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 pixel_size = 0.0025
@@ -303,9 +305,9 @@ wait_time = 2.0
 one_shot = true
 
 [node name="Hitbox" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.901732, 0, 0)
 collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 shape = SubResource("BoxShape3D_m6j6a")
+disabled = true

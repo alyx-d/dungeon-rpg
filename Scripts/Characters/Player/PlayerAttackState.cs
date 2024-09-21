@@ -8,6 +8,7 @@ public partial class PlayerAttackState : PlayerState
     [Export] private Timer _attackTimer;
     private int _comboCounter = 1;
     private int _maxComboCount = 2;
+    private float _attackDistanceMultiplier = 0.75f;
 
     public override void _Ready()
     {
@@ -38,7 +39,8 @@ public partial class PlayerAttackState : PlayerState
     {
         _comboCounter++;
         _comboCounter = Mathf.Wrap(_comboCounter, 1, _maxComboCount + 1);
-
+        
+        CharacterNode.ToggleHitBox(true);
         CharacterNode.StateMachineNode.SwitchState<PlayerIdleState>();
     }
 
@@ -49,6 +51,10 @@ public partial class PlayerAttackState : PlayerState
 
     private void PerformHit()
     {
-        GD.Print("Perform hit!");
+        var newPosition = CharacterNode.Sprite3dNode.FlipH ? Vector3.Left : Vector3.Right;
+        newPosition *= _attackDistanceMultiplier;
+        CharacterNode.HitboxNode.Position = newPosition;
+        
+        CharacterNode.ToggleHitBox(false);
     }
 }
