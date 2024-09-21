@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://bmwujydw2grjg"]
+[gd_scene load_steps=91 format=3 uid="uid://bmwujydw2grjg"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Player.cs" id="1_awirc"]
 [ext_resource type="Texture2D" uid="uid://g0ecvxo5vge8" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_000.png" id="1_ljt4w"]
@@ -80,6 +80,7 @@
 [ext_resource type="PackedScene" uid="uid://dwu1ukyqunt4n" path="res://Scenes/Characters/state_machine.tscn" id="77_wxrm8"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerMoveState.cs" id="78_kwon6"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerDashState.cs" id="80_0oe51"]
+[ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerAttackState.cs" id="81_drouv"]
 
 [sub_resource type="Animation" id="Animation_trgpx"]
 length = 0.001
@@ -234,7 +235,7 @@ shape = SubResource("CapsuleShape3D_fdup4")
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("_currentState", "_states") instance=ExtResource("77_wxrm8")]
 _currentState = NodePath("IdleState")
-_states = [NodePath("IdleState"), NodePath("MoveState"), NodePath("DashState")]
+_states = [NodePath("IdleState"), NodePath("MoveState"), NodePath("DashState"), NodePath("AttackState")]
 
 [node name="IdleState" type="Node" parent="StateMachine"]
 script = ExtResource("77_4ckst")
@@ -249,3 +250,6 @@ _dashTimer = NodePath("DashTimer")
 [node name="DashTimer" type="Timer" parent="StateMachine/DashState"]
 wait_time = 0.4
 one_shot = true
+
+[node name="AttackState" type="Node" parent="StateMachine"]
+script = ExtResource("81_drouv")
