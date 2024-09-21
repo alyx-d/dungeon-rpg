@@ -37,7 +37,7 @@ public abstract partial class Character : CharacterBody3D
         var health = GetStatResource(Stat.Health);
         var character = area.GetOwner<Character>();
         health.StatValue -= character.GetStatResource(Stat.Strength).StatValue;
-        GD.Print($"{character.Name} Health: " + health.StatValue);
+        GD.Print($"from {character.Name} -> {Name} Health: " + health.StatValue);
     }
 
     public StatResource GetStatResource(Stat stat)
