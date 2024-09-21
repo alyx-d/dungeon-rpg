@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using DungeonRpg.General;
+using DungeonRpg.Scripts.General;
 using Godot;
 
 namespace DungeonRpg.Scripts.UI;
