@@ -1,4 +1,4 @@
-﻿using DungeonRpg.General;
+﻿using DungeonRpg.Scripts.General;
 using DungeonRpg.Scripts.Resources;
 using Godot;
 

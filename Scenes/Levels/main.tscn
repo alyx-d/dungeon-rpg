@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://skqydyy10w2j"]
+[gd_scene load_steps=12 format=3 uid="uid://skqydyy10w2j"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/Main.cs" id="1_3crkv"]
+[ext_resource type="PackedScene" uid="uid://dpm1rk4ethg7o" path="res://Scenes/General/ui.tscn" id="2_2s3sj"]
 [ext_resource type="PackedScene" uid="uid://bmwujydw2grjg" path="res://Scenes/Characters/Player/player.tscn" id="2_byxde"]
 [ext_resource type="MeshLibrary" uid="uid://coikpx2tub1ns" path="res://Resources/tiles.tres" id="3_cwvkk"]
 [ext_resource type="PackedScene" uid="uid://pwc71w1wyqba" path="res://Scenes/Characters/Enemy/enemy.tscn" id="4_fgqjy"]
+[ext_resource type="Script" path="res://Scripts/General/Camera3d.cs" id="6_g2xcf"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_88hdr"]
 vertices = PackedVector3Array(21, 5.4, -19, 21, 5.4, -17.75, 23, 5.4, -17.75, 23.25, 5.4, -19, 24.25, 5.4, -19.5, 41, 5.4, -19.5, 41, 5.4, -61.5, 3, 5.4, -61.5, 19.75, 5.4, -19.5, 3, 5.4, -19.5, 58.25, 1.4, -5.5, 56.25, 1.4, -5.5, 56.25, 1.4, 5.5, 59, 1.4, -6.25, 93, 1.4, 5.5, 93, 1.4, -57.5, 59, 1.4, -57.5, 25, 1.4, -16.5, 24.25, 1.4, -16.5, 24.25, 1.4, -12.75, 25, 1.4, -8.5, 20, 1.4, -12.75, 19.75, 1.4, -16.5, 19, 1.4, -16.5, 19, 1.4, -8.5, 21, 1.9, -12.75, 23.25, 1.9, -12.75, 23.6875, 1.4, -11.6875, 20.5, 1.4, -11.6875, 19, 1.4, -6.25, 25.25, 1.4, -6, 18.25, 1.4, -5.5, 16.25, 1.4, -5.5, 16.25, 1.4, 5.5, 25.75, 1.4, -5.5, 27.75, 1.4, 5.5, 27.75, 1.4, -5.5, 1, 1.4, 1.25, 2, 1.4, 1, 2, 1.4, 0.25, 1, 1.4, -0.25, -5.5, 1.4, -5.5, -5.5, 1.4, 5.5, 1, 1.4, 5.5, 1, 1.4, -5.5, 3, 1.4, 1.25, 3, 1.4, -0.25, 3, 1.4, 5.5, 3, 1.4, -5.5)
@@ -29,11 +31,10 @@ point_count = 8
 [node name="Main" type="Node3D"]
 script = ExtResource("1_3crkv")
 
+[node name="UI" parent="." instance=ExtResource("2_2s3sj")]
+
 [node name="Player" parent="." instance=ExtResource("2_byxde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.70933, 1.92994, 0)
-
-[node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 2, 6)
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -120,3 +121,9 @@ curve = SubResource("Curve3D_c4dp0")
 [node name="Path3D10" type="Path3D" parent="Enemies"]
 transform = Transform3D(0.855247, 0, -0.518221, 0, 1, 0, 0.518221, 0, 0.855247, 6.79432, 5.98879, -47.3356)
 curve = SubResource("Curve3D_c4dp0")
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("_targetNode")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.1551, 7.30194, -19.2995)
+script = ExtResource("6_g2xcf")
+_targetNode = NodePath("../Player")
+_positionFromTarget = Vector3(0, 2, 6)

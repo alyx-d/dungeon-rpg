@@ -1,4 +1,4 @@
-﻿using DungeonRpg.General;
+﻿using DungeonRpg.Scripts.General;
 using Godot;
 
 namespace DungeonRpg.Scripts.Characters;

@@ -1,5 +1,4 @@
-using DungeonRpg.General;
-using Godot;
+using DungeonRpg.Scripts.General;
 
 namespace DungeonRpg.Scripts.Characters.Enemy;
 

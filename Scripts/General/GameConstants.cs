@@ -1,4 +1,4 @@
-﻿namespace DungeonRpg.General;
+﻿namespace DungeonRpg.Scripts.General;
 
 public abstract class GameConstants
 {
