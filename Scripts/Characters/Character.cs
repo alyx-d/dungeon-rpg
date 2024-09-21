@@ -14,7 +14,8 @@ public abstract partial class Character : CharacterBody3D
 
     [ExportGroup("AI Nodes")] [Export] public Path3D Path3DNode { get; private set; }
     [Export] public NavigationAgent3D NavigationAgent3DNode { get; private set; }
-    [Export] public Area3D ChaseArea3DNode { get; private set; }
+    [Export] public Area3D ChaseArea3dNode { get; private set; }
+    [Export] public Area3D AttackArea3dNode { get; private set; }
 
     public Vector2 Direction = Vector2.Zero;
 

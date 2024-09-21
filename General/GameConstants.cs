@@ -6,6 +6,7 @@ public abstract class GameConstants
     public const string AnimIdle = "Idle";
     public const string AnimMove = "Move";
     public const string AnimDash = "Dash";
+    public const string AnimAttack = "Attack";
     public const string AnimAttack1 = "Attack1";
     public const string AnimAttack2 = "Attack2";
     public const string AnimDeath = "Death";
