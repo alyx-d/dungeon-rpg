@@ -1,9 +1,10 @@
-[gd_scene load_steps=96 format=3 uid="uid://bmwujydw2grjg"]
+[gd_scene load_steps=95 format=3 uid="uid://bmwujydw2grjg"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Player.cs" id="1_awirc"]
 [ext_resource type="Texture2D" uid="uid://g0ecvxo5vge8" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_000.png" id="1_ljt4w"]
-[ext_resource type="Script" path="res://Scripts/Resources/StatResource.cs" id="2_2jr05"]
+[ext_resource type="Resource" uid="uid://75rv2b5vyvyf" path="res://Resources/player_health_stat.tres" id="2_eftb6"]
 [ext_resource type="Texture2D" uid="uid://k6fdaxl4sbb3" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_001.png" id="2_oobsr"]
+[ext_resource type="Resource" uid="uid://du248iya1r2b5" path="res://Resources/player_strength_stat.tres" id="3_3ocgb"]
 [ext_resource type="Texture2D" uid="uid://ba0f56esuphol" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_002.png" id="3_g7lti"]
 [ext_resource type="Texture2D" uid="uid://cj2l3rq5jobh1" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_003.png" id="4_c6hf6"]
 [ext_resource type="Texture2D" uid="uid://c3vus0cyw0bup" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_004.png" id="5_w2a7v"]
@@ -83,16 +84,6 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerDashState.cs" id="80_0oe51"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerAttackState.cs" id="81_drouv"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerDeathState.cs" id="83_bj3m5"]
-
-[sub_resource type="Resource" id="Resource_u0jwj"]
-script = ExtResource("2_2jr05")
-StatType = 0
-StatValue = 100.0
-
-[sub_resource type="Resource" id="Resource_1vtwq"]
-script = ExtResource("2_2jr05")
-StatType = 1
-StatValue = 4.0
 
 [sub_resource type="Animation" id="Animation_f7m6m"]
 resource_name = "Attack1"
@@ -258,7 +249,7 @@ collision_mask = 5
 floor_max_angle = 1.55334
 floor_snap_length = 0.3
 script = ExtResource("1_awirc")
-_stats = Array[Resource]([SubResource("Resource_u0jwj"), SubResource("Resource_1vtwq")])
+_stats = Array[Resource]([ExtResource("2_eftb6"), ExtResource("3_3ocgb")])
 Sprite3dNode = NodePath("Sprite3D")
 AnimPlayerNode = NodePath("AnimationPlayer")
 StateMachineNode = NodePath("StateMachine")
