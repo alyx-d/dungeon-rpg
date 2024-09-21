@@ -251,5 +251,10 @@ _dashTimer = NodePath("DashTimer")
 wait_time = 0.4
 one_shot = true
 
-[node name="AttackState" type="Node" parent="StateMachine"]
+[node name="AttackState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_attackTimer")]
 script = ExtResource("81_drouv")
+_attackTimer = NodePath("AttackTimer")
+
+[node name="AttackTimer" type="Timer" parent="StateMachine/AttackState"]
+wait_time = 2.0
+one_shot = true
