@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://bmwujydw2grjg"]
+[gd_scene load_steps=96 format=3 uid="uid://bmwujydw2grjg"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Player.cs" id="1_awirc"]
 [ext_resource type="Texture2D" uid="uid://g0ecvxo5vge8" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_000.png" id="1_ljt4w"]
@@ -82,6 +82,7 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerMoveState.cs" id="78_kwon6"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerDashState.cs" id="80_0oe51"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerAttackState.cs" id="81_drouv"]
+[ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerDeathState.cs" id="83_bj3m5"]
 
 [sub_resource type="Resource" id="Resource_u0jwj"]
 script = ExtResource("2_2jr05")
@@ -281,7 +282,7 @@ shape = SubResource("CapsuleShape3D_fdup4")
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("_currentState", "_states") instance=ExtResource("77_wxrm8")]
 _currentState = NodePath("IdleState")
-_states = [NodePath("IdleState"), NodePath("MoveState"), NodePath("DashState"), NodePath("AttackState")]
+_states = [NodePath("IdleState"), NodePath("MoveState"), NodePath("DashState"), NodePath("AttackState"), NodePath("DeathState")]
 
 [node name="IdleState" type="Node" parent="StateMachine"]
 script = ExtResource("77_4ckst")
@@ -304,6 +305,9 @@ _attackTimer = NodePath("AttackTimer")
 [node name="AttackTimer" type="Timer" parent="StateMachine/AttackState"]
 wait_time = 2.0
 one_shot = true
+
+[node name="DeathState" type="Node" parent="StateMachine"]
+script = ExtResource("83_bj3m5")
 
 [node name="Hitbox" type="Area3D" parent="."]
 collision_layer = 2

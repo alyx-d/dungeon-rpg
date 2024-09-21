@@ -23,6 +23,11 @@ public partial class StateMachine : Node
             return;
         }
 
+        if (_currentState is T)
+        {
+            return;
+        }
+
         _currentState.Notification(GameConstants.SignalExitState);
         _currentState = newState;
         _currentState.Notification(GameConstants.SignalEnterState);

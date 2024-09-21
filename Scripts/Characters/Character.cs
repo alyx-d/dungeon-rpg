@@ -43,12 +43,9 @@ public abstract partial class Character : CharacterBody3D
     public StatResource GetStatResource(Stat stat)
     {
         var resource = _stats.FirstOrDefault(it => it.StatType == stat);
-        if (resource == null)
-        {
-            GD.Print($"No stat resource found for {stat}");
-            throw new ArgumentException($"No stat resource found for {stat}");
-        }
-        return resource;
+        if (resource != null) return resource;
+        GD.Print($"No stat resource found for {stat}");
+        throw new ArgumentException($"No stat resource found for {stat}");
     }
 
     public void Flip()
