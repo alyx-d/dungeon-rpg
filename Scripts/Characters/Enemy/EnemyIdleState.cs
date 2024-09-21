@@ -13,5 +13,11 @@ public partial class EnemyIdleState : EnemyState
     protected override void EnterState()
     {
         CharacterNode.AnimPlayerNode.Play(GameConstants.AnimIdle);
+        CharacterNode.ChaseArea3DNode.BodyEntered += HandleChaseAreaBodyEntered;
+    }
+
+    protected override void ExitState()
+    {
+        CharacterNode.ChaseArea3DNode.BodyEntered -= HandleChaseAreaBodyEntered;
     }
 }
