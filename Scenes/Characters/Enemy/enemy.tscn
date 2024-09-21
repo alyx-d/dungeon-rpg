@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://pwc71w1wyqba"]
+[gd_scene load_steps=100 format=3 uid="uid://pwc71w1wyqba"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/Enemy.cs" id="1_ecg0a"]
 [ext_resource type="Texture2D" uid="uid://cgxpl50q3mta" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_000.png" id="1_g2gv0"]
@@ -91,6 +91,7 @@
 [ext_resource type="PackedScene" uid="uid://dwu1ukyqunt4n" path="res://Scenes/Characters/state_machine.tscn" id="88_3tfdl"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyIdleState.cs" id="90_tcvdl"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyReturnState.cs" id="91_etor8"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyPatrolState.cs" id="92_0ckgq"]
 
 [sub_resource type="Animation" id="Animation_0ak3a"]
 resource_name = "Attack"
@@ -235,10 +236,13 @@ debug_enabled = true
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("_currentState", "_states") instance=ExtResource("88_3tfdl")]
 _currentState = NodePath("IdleState")
-_states = [NodePath("IdleState"), NodePath("ReturnState")]
+_states = [NodePath("IdleState"), NodePath("ReturnState"), NodePath("PatrolState")]
 
 [node name="IdleState" type="Node" parent="StateMachine"]
 script = ExtResource("90_tcvdl")
 
 [node name="ReturnState" type="Node" parent="StateMachine"]
 script = ExtResource("91_etor8")
+
+[node name="PatrolState" type="Node" parent="StateMachine"]
+script = ExtResource("92_0ckgq")
