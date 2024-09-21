@@ -40,10 +40,23 @@ public partial class EnemyAttackState : EnemyState
             .FirstOrDefault();
         if (target == null)
         {
+            var chaseTarget = CharacterNode.ChaseArea3dNode
+                .GetOverlappingBodies()
+                .FirstOrDefault();
+            if (chaseTarget == null)
+            {
+                CharacterNode.StateMachineNode.SwitchState<EnemyReturnState>();
+                return;
+            }
+            
             CharacterNode.StateMachineNode.SwitchState<EnemyChaseState>();
             return;
         }
+
         CharacterNode.AnimPlayerNode.Play(GameConstants.AnimAttack);
         _targetPosition = target.GlobalPosition;
+
+        var direction = CharacterNode.GlobalPosition.DirectionTo(_targetPosition);
+        CharacterNode.Sprite3dNode.FlipH = direction.X < 0;
     }
 }
