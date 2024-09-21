@@ -7,7 +7,7 @@ public partial class PlayerDashState : CharacterState
 {
     [Export] private Timer _dashTimer;
 
-    [Export(PropertyHint.Range, "1,20,0.1")]
+    [Export(PropertyHint.Range, "0,20,0.1")]
     private float _dashSpeed = 10f;
 
     public override void _Ready()

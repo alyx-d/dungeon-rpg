@@ -5,6 +5,7 @@ namespace DungeonRpg.Scripts.Characters.Player;
 
 public partial class PlayerMoveState : CharacterState
 {
+    [Export(PropertyHint.Range, "0,50,1")]
     private float _playerMoveSpeed = 5f;
 
     public override void _PhysicsProcess(double delta)

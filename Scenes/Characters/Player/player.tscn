@@ -234,6 +234,7 @@ script = ExtResource("78_kwon6")
 [node name="DashState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_dashTimer")]
 script = ExtResource("80_0oe51")
 _dashTimer = NodePath("DashTimer")
+_dashSpeed = 19.7
 
 [node name="DashTimer" type="Timer" parent="StateMachine/DashState"]
 wait_time = 0.4
