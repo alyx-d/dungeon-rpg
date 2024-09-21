@@ -18,6 +18,8 @@ public abstract class GameConstants
     public const string InputDash = "Dash";
     public const string InputAttack = "Attack";
     
+    public const string InputPause = "Pause";
+    
     //Signal
     public const int SignalEnterState = 5001;
     public const int SignalExitState = 5002;
