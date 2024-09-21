@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://bmwujydw2grjg"]
+[gd_scene load_steps=90 format=3 uid="uid://bmwujydw2grjg"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Player.cs" id="1_awirc"]
 [ext_resource type="Texture2D" uid="uid://g0ecvxo5vge8" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_000.png" id="1_ljt4w"]
@@ -205,13 +205,20 @@ _data = {
 "RESET": SubResource("Animation_trgpx")
 }
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fdup4"]
+height = 1.6781
+
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("Sprite3dNode", "AnimPlayerNode", "StateMachineNode")]
+collision_layer = 2
+floor_max_angle = 1.55334
+floor_snap_length = 0.3
 script = ExtResource("1_awirc")
 Sprite3dNode = NodePath("Sprite3D")
 AnimPlayerNode = NodePath("AnimationPlayer")
 StateMachineNode = NodePath("StateMachine")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.0025
 texture_filter = 0
 texture = ExtResource("1_ljt4w")
 
@@ -219,6 +226,10 @@ texture = ExtResource("1_ljt4w")
 libraries = {
 "": SubResource("AnimationLibrary_iwbav")
 }
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.101519, 0)
+shape = SubResource("CapsuleShape3D_fdup4")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("_currentState", "_states")]
 script = ExtResource("79_8wpwf")
