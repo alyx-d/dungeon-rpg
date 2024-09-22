@@ -1,9 +1,10 @@
+using DungeonRpg.Scripts.Interfaces;
 using DungeonRpg.Scripts.Resources;
 using Godot;
 
 namespace DungeonRpg.Scripts.Characters;
 
-public partial class AttackHitbox : Area3D
+public partial class AttackHitbox : Area3D, IHitbox
 {
     public float GetDamage()
     {

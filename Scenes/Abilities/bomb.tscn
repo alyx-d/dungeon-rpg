@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dkchw8eh2jyel"]
+[gd_scene load_steps=19 format=3 uid="uid://dkchw8eh2jyel"]
 
 [ext_resource type="Texture2D" uid="uid://v48lq10i5d4" path="res://Assets/Sprites/Effects/Explosion/Bomb.png" id="1_mi7e4"]
 [ext_resource type="Script" path="res://Scripts/Abilities/Bomb.cs" id="1_wdwtk"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dxg6tyytvv5pl" path="res://Assets/Sprites/Effects/Explosion/8.png" id="9_lrs1o"]
 [ext_resource type="Texture2D" uid="uid://cuxx6o6w2cm85" path="res://Assets/Sprites/Effects/Explosion/9.png" id="10_hwv74"]
 [ext_resource type="Texture2D" uid="uid://brvyyqqlrl131" path="res://Assets/Sprites/Effects/Explosion/10.png" id="11_l85mr"]
+[ext_resource type="Script" path="res://Scripts/Abilities/AbilityHitbox.cs" id="13_m7wfo"]
 
 [sub_resource type="Animation" id="Animation_ok38b"]
 resource_name = "Expand"
@@ -77,7 +78,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_fcpcx"]
@@ -114,7 +115,7 @@ tracks/2/path = NodePath("Hitbox/CollisionShape3D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.2),
+"times": PackedFloat32Array(0.3),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
@@ -145,6 +146,8 @@ autoplay = "Expand"
 [node name="Hitbox" type="Area3D" parent="."]
 collision_layer = 2
 collision_mask = 0
+script = ExtResource("13_m7wfo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 shape = SubResource("SphereShape3D_f0m2t")
+disabled = true

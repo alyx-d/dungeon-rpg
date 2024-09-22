@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using DungeonRpg.Scripts.Interfaces;
 using DungeonRpg.Scripts.Resources;
 using Godot;
 
@@ -33,7 +34,7 @@ public abstract partial class Character : CharacterBody3D
 
     private void HandleHurtboxEntered(Area3D area)
     {
-        if (area is not AttackHitbox hitbox)
+        if (area is not IHitbox hitbox)
         {
             return;
         }

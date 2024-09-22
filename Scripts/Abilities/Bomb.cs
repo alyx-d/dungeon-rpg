@@ -5,6 +5,7 @@ namespace DungeonRpg.Scripts.Abilities;
 
 public partial class Bomb : Node3D
 {
+    [Export] public float Damage { get; private set; } = 10;
     [Export] private AnimationPlayer _animPlayerNode;
 
     public override void _Ready()
