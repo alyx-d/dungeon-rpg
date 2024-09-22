@@ -33,10 +33,13 @@ public abstract partial class Character : CharacterBody3D
 
     private void HandleHurtboxEntered(Area3D area)
     {
+        if (area is not AttackHitbox hitbox)
+        {
+            return;
+        }
         var health = GetStatResource(Stat.Health);
-        var character = area.GetOwner<Character>();
-        health.StatValue -= character.GetStatResource(Stat.Strength).StatValue;
-        GD.Print($"from {character.Name} -> {Name} Health: " + health.StatValue);
+        health.StatValue -= hitbox.GetDamage();
+        GD.Print($" -> {Name} Health: " + health.StatValue);
     }
 
     public StatResource GetStatResource(Stat stat)
