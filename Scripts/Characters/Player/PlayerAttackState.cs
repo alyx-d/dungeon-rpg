@@ -5,6 +5,7 @@ namespace DungeonRpg.Scripts.Characters.Player;
 
 public partial class PlayerAttackState : PlayerState
 {
+    [Export] private PackedScene _lightningScene;
     [Export] private Timer _attackTimer;
     private int _comboCounter = 1;
     private int _maxComboCount = 2;
@@ -26,11 +27,13 @@ public partial class PlayerAttackState : PlayerState
         );
 
         CharacterNode.AnimPlayerNode.AnimationFinished += HandleAnimationFinished;
+        CharacterNode.HitboxNode.BodyEntered += HandleBodyEntered;
     }
 
     protected override void ExitState()
     {
         CharacterNode.AnimPlayerNode.AnimationFinished -= HandleAnimationFinished;
+        CharacterNode.HitboxNode.BodyEntered -= HandleBodyEntered;
 
         _attackTimer.Start();
     }
@@ -39,7 +42,7 @@ public partial class PlayerAttackState : PlayerState
     {
         _comboCounter++;
         _comboCounter = Mathf.Wrap(_comboCounter, 1, _maxComboCount + 1);
-        
+
         CharacterNode.ToggleHitBox(true);
         CharacterNode.StateMachineNode.SwitchState<PlayerIdleState>();
     }
@@ -54,7 +57,19 @@ public partial class PlayerAttackState : PlayerState
         var newPosition = CharacterNode.Sprite3dNode.FlipH ? Vector3.Left : Vector3.Right;
         newPosition *= _attackDistanceMultiplier;
         CharacterNode.HitboxNode.Position = newPosition;
-        
+
         CharacterNode.ToggleHitBox(false);
+    }
+
+    private void HandleBodyEntered(Node3D body)
+    {
+        if (_comboCounter != _maxComboCount)
+        {
+            return;
+        }
+
+        var lightning = _lightningScene.Instantiate<Node3D>();
+        GetTree().CurrentScene.AddChild(lightning);
+        lightning.GlobalPosition = body.GlobalPosition;
     }
 }
