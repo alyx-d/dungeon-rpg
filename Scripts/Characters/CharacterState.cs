@@ -1,4 +1,5 @@
-﻿using DungeonRpg.Scripts.General;
+﻿using System;
+using DungeonRpg.Scripts.General;
 using Godot;
 
 namespace DungeonRpg.Scripts.Characters;
@@ -6,6 +7,7 @@ namespace DungeonRpg.Scripts.Characters;
 public abstract partial class CharacterState : Node
 {
     protected Character CharacterNode;
+    public Func<bool> CanTransition = () => true;
 
     public override void _Ready()
     {

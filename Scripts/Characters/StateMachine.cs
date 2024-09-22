@@ -7,7 +7,7 @@ namespace DungeonRpg.Scripts.Characters;
 public partial class StateMachine : Node
 {
     [Export] private Node _currentState;
-    [Export] private Node[] _states;
+    [Export] private CharacterState[] _states;
 
     public override void _Ready()
     {
@@ -24,6 +24,11 @@ public partial class StateMachine : Node
         }
 
         if (_currentState is T)
+        {
+            return;
+        }
+
+        if (!newState.CanTransition())
         {
             return;
         }

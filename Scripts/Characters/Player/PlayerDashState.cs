@@ -5,7 +5,8 @@ namespace DungeonRpg.Scripts.Characters.Player;
 
 public partial class PlayerDashState : PlayerState
 {
-    [Export] private Timer _dashTimer;
+    [Export] private Timer _durationTimerNode;
+    [Export] private Timer _cooldownTimerNode;
 
     [Export(PropertyHint.Range, "0,20,0.1")]
     private float _dashSpeed = 10f;
@@ -15,7 +16,8 @@ public partial class PlayerDashState : PlayerState
     public override void _Ready()
     {
         base._Ready();
-        _dashTimer.Timeout += HandleDashTimeout;
+        _durationTimerNode.Timeout += HandleDurationTimeout;
+        CanTransition = () => _cooldownTimerNode.IsStopped();
     }
 
     public override void _PhysicsProcess(double delta)
@@ -39,15 +41,17 @@ public partial class PlayerDashState : PlayerState
         }
 
         CharacterNode.Velocity *= _dashSpeed;
-        _dashTimer.Start();
+        _durationTimerNode.Start();
 
         var bomb = _bombScene.Instantiate<Node3D>();
         GetTree().CurrentScene.AddChild(bomb);
         bomb.GlobalPosition = CharacterNode.GlobalPosition;
     }
 
-    private void HandleDashTimeout()
+    private void HandleDurationTimeout()
     {
+        _cooldownTimerNode.Start();
+        
         CharacterNode.Velocity = Vector3.Zero;
         CharacterNode.StateMachineNode.SwitchState<PlayerIdleState>();
     }
