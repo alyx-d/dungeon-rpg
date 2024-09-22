@@ -19,6 +19,7 @@ public abstract class GameConstants
     public const string InputAttack = "Attack";
     
     public const string InputPause = "Pause";
+    public const string InputInteract = "Interact";
     
     //Signal
     public const int SignalEnterState = 5001;
